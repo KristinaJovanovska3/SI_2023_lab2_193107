@@ -1,0 +1,139 @@
+
+3. E-N+2 
+E e бројот на гранки додека пак N е бројот на јазли.
+Во овој случај E е 30 ,а N е 23
+=30-23+2+9
+
+4.
+тест 1. ако user е null 
+	User user = null;
+	List<User> allUsers = new ArrayList<>();
+	try {
+   		 function(user, allUsers);
+    		Assert.fail("Expected RuntimeException");
+	} catch (RuntimeException e) {
+   	 Assert.assertEquals("Mandatory information missing!", e.getMessage());
+	}
+
+тест 2.Ако user.getPassword() е null 
+	User user = new User();
+		List<User> allUsers = new ArrayList<>();
+		try {
+    			function(user, allUsers);
+    			Assert.fail("Expected RuntimeException");
+		} catch (RuntimeException e) {
+   		 Assert.assertEquals("Mandatory information missing!", e.getMessage());
+		}
+
+тест 3.user.getEmail()  е null 
+
+	User user = new User();
+user.setPassword("password");
+List<User> allUsers = new ArrayList<>();
+try {
+    function(user, allUsers);
+    Assert.fail("Expected RuntimeException");
+} catch (RuntimeException e) {
+    Assert.assertEquals("Mandatory information missing!", e.getMessage());
+}
+
+тест 4.user.getUsername()  е null 
+
+	User user = new User();
+user.setPassword("password");
+user.setEmail("test@example.com");
+List<User> allUsers = new ArrayList<>();
+function(user, allUsers);
+Assert.assertEquals(user.getEmail(), user.getUsername());
+
+тест 5. тест за user.getEmail().contains("@") и user.getEmail().contains(".") доколку нема совпаѓање на мејл и корисник во allUsers
+
+User user = new User();
+user.setPassword("password");
+user.setEmail("test@example.com");
+List<User> allUsers = new ArrayList<>();
+boolean result = function(user, allUsers);
+// Assert that same is 0
+Assert.assertEquals(0, same);
+// Assert that result is false
+Assert.assertFalse(result);
+
+тест 6.тест ако passwordLower.contains(user.getUsername().toLowerCase()) или password.length() < 8
+
+User user = new User();
+user.setPassword("password");
+user.setEmail("test@example.com");
+List<User> allUsers = new ArrayList<>();
+boolean result = function(user, allUsers);
+// Assert that result is false
+Assert.assertFalse(result);
+
+
+тест 8.тест за гранката каде што !passwordLower.contains(" ")
+
+User user = new User();
+user.setPassword("password");
+user.setEmail("test@example.com");
+List<User> allUsers = new ArrayList<>();
+boolean result = function(user, all)
+
+5.Tест случаи за овој if (user==null || user.getPassword()==null || user.getEmail()==null) услов има 6 така што треба да ги разгледаме сите можни комбинации 
+на true и false за секој услов
+
+тест 1
+- доколку сите услови се точни 
+User user = null;
+String password = null;
+String email = null;
+boolean result = function(user, password, email);
+Assert.assertTrue(result);
+
+тест 2
+-каде што user не е null, а user.getPassword() и user.getEmail() се nul
+User user = new User();
+String password = null;
+String email = null;
+boolean result = function(user, password, email);
+Assert.assertTrue(result);
+
+тест 3
+-во овој тест е обратно user е null, а user.getPassword() и user.getEmail() не се nul
+User user = null;
+String password = "password";
+String email = "test@example.com";
+boolean result = function(user, password, email);
+Assert.assertTrue(result);
+
+тест 4
+-тука user.getEmail() е null, а останатите две не се 
+User user = new User();
+user.setPassword("password");
+String password = user.getPassword();
+String email = null;
+boolean result = function(user, password, email);
+Assert.assertTrue(result);
+
+тест 5
+-во овој случај user  и user.getEmail() не се null,а user.getPassword() е null
+User user = new User();
+user.setEmail("test@example.com");
+String password = null;
+String email = user.getEmail();
+boolean result = function(user, password, email);
+Assert.assertTrue(result);
+
+тест 6
+-тест доколку сите услови се false
+User user = new User();
+user.setPassword("password");
+user.setEmail("test@example.com");
+String password = user.getPassword();
+String email = user.getEmail();
+boolean result = function(user, password, email);
+Assert.assertFalse(result);
+
+
+
+
+
+
